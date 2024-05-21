@@ -1,13 +1,13 @@
 #include <iostream>
-#include <Windows.h>
+#include "renderer.cpp"
 
 bool running = true;
 
-// buffer related stuff - Whatever that is...
-void* buffer_memory;
-int buffer_width;
-int buffer_height;
-BITMAPINFO buffer_bitmap_info;
+// The Render state handles buffer memory allocation for graphics?
+
+
+RenderState renderState;
+
 
 // The WndProc handles messages and correspond to windows based messages to carry out commands.
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -24,23 +24,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         // rect struct uses four coordinates corresponding to each side of a rectangle
         RECT rect;
         GetClientRect(hWnd, &rect);
-        buffer_width = rect.right - rect.left;
-        buffer_height = rect.bottom - rect.top;
+        renderState.width = rect.right - rect.left;
+        renderState.height = rect.bottom - rect.top;
 
-        int buffer = buffer_width * buffer_height * sizeof(unsigned int);
+        int buffer = renderState.width * renderState.height * sizeof(unsigned int);
 
         // if buffer memory needs to be updated, then free up the memory
-        if (buffer_memory) VirtualFree(buffer_memory, 0, MEM_RELEASE);
+        if (renderState.memory) VirtualFree(renderState.memory, 0, MEM_RELEASE);
 
         // this gives the buffer the memory it needs!
-        buffer_memory = VirtualAlloc(0, buffer, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+        renderState.memory = VirtualAlloc(0, buffer, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
 
-        buffer_bitmap_info.bmiHeader.biSize = sizeof(buffer_bitmap_info.bmiHeader);
-        buffer_bitmap_info.bmiHeader.biWidth = buffer_width;
-        buffer_bitmap_info.bmiHeader.biHeight = buffer_height;
-        buffer_bitmap_info.bmiHeader.biPlanes = 1;
-        buffer_bitmap_info.bmiHeader.biBitCount = 32;
-        buffer_bitmap_info.bmiHeader.biCompression = BI_RGB;
+        //Sets renderState.bitmap_info qualities
+        renderState.bitmapInfo.bmiHeader.biSize = sizeof(renderState.bitmapInfo.bmiHeader);
+        renderState.bitmapInfo.bmiHeader.biWidth = renderState.width;
+        renderState.bitmapInfo.bmiHeader.biHeight = renderState.height;
+        renderState.bitmapInfo.bmiHeader.biPlanes = 1;
+        renderState.bitmapInfo.bmiHeader.biBitCount = 32;
+        renderState.bitmapInfo.bmiHeader.biCompression = BI_RGB;
 
     } break;
 
@@ -78,8 +79,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         // Simulate
 
         // Render
-        StretchDIBits(hdc, 0, 0, buffer_width, buffer_height, 0, 0, buffer_width, buffer_height, buffer_memory, &buffer_bitmap_info, DIB_RGB_COLORS, SRCCOPY);
-    
+        StretchDIBits(hdc, 0, 0, renderState.width, renderState.height, 0, 0, renderState.width, renderState.height, renderState.memory, &renderState.bitmapInfo, DIB_RGB_COLORS, SRCCOPY);
+        makeBackground(renderState);
+
     }
 
     return 0;

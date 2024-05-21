@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "G:\\Vs Solutions\\Pong\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{71607C30-FDCF-41F5-A6C4-719E72F36037}|Pong\\Pong.vcxproj|G:\\Vs Solutions\\Pong\\Pong\\renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{71607C30-FDCF-41F5-A6C4-719E72F36037}|Pong\\Pong.vcxproj|solutionrelative:Pong\\renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{71607C30-FDCF-41F5-A6C4-719E72F36037}|Pong\\Pong.vcxproj|G:\\Vs Solutions\\Pong\\Pong\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{71607C30-FDCF-41F5-A6C4-719E72F36037}|Pong\\Pong.vcxproj|solutionrelative:Pong\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "renderer.cpp",
+              "DocumentMoniker": "G:\\Vs Solutions\\Pong\\Pong\\renderer.cpp",
+              "RelativeDocumentMoniker": "Pong\\renderer.cpp",
+              "ToolTip": "G:\\Vs Solutions\\Pong\\Pong\\renderer.cpp",
+              "RelativeToolTip": "Pong\\renderer.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-21T22:13:20.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "G:\\Vs Solutions\\Pong\\Pong\\main.cpp",
               "RelativeDocumentMoniker": "Pong\\main.cpp",
               "ToolTip": "G:\\Vs Solutions\\Pong\\Pong\\main.cpp",
               "RelativeToolTip": "Pong\\main.cpp",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAFAAAACeAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFIAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-21T02:04:51.519Z",
               "EditorCaption": ""
