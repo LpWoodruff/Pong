@@ -17,18 +17,32 @@ void makeBackground(RenderState& renderState)
     {
         for (int x = 0; x < renderState.width; x++)
         {
-            *pixel++ = 0xff00ff;
+            *pixel++ = 0xdf0040;
         }
     }
 }
 
-void clearScreen(int color)
+void clearScreen(RenderState& renderState, unsigned int color)
 {
-
+    unsigned int* pixel = (unsigned int*)renderState.memory;
+     for (int y = 0; y < renderState.height; y++)
+    {
+        for (int x = 0; x < renderState.width; x++)
+        {
+            *pixel++ = color;
+        }
+    }
 }
 
-
-void draw_rect(int &x, int &y, int &width, int &height, int &color )
+void draw_rect(RenderState& renderState, int x0, int y0, int x1, int y1, unsigned int color)
 {
-
+    for (int y = y0; y < y1; y++)
+    {
+        unsigned int* pixel = (unsigned int*)renderState.memory + x0 + y*renderState.width;
+        for (int x = x0; x < x1; x++)
+        {
+            *pixel++ = color;
+        }
+    }
 }
+

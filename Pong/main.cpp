@@ -4,8 +4,6 @@
 bool running = true;
 
 // The Render state handles buffer memory allocation for graphics?
-
-
 RenderState renderState;
 
 
@@ -81,6 +79,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         // Render
         StretchDIBits(hdc, 0, 0, renderState.width, renderState.height, 0, 0, renderState.width, renderState.height, renderState.memory, &renderState.bitmapInfo, DIB_RGB_COLORS, SRCCOPY);
         makeBackground(renderState);
+        draw_rect(renderState, 490, 490, 650, 500, 0x20ff20);
+        draw_rect(renderState, 10, 10, 50, 500, 0x202020);
 
     }
 
